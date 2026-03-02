@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;  
+}
+
+header {
+    padding: 10px 4%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+header > .interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a {
+    color:rgb(133, 133, 133);
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+
+header a:hover{
+    color: #000;
+    transform: scale(1.05);
+}
+
+header nav ul {
+    list-style-type: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    padding: 0 40px;    
+}
+
+header .tg-contato button {
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #5081e2;
+    border: 0;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+header .tg-contato button {
+    box-shadow: 0px 0px 8px #0659ff;
+}
+
+/* abaixo-cabeçalho*/
+
+section.Contact {
+    position: relative;
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url(./img/florian-olivo-4hbJ-eymZ1o-unsplash.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+section.Contact::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+/* Ícones de contato */
+.Contatinho {
+    position: relative;
+    z-index: 2; 
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.Contatinho img {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.Contatinho img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Contatinho a {
+    text-decoration: none; 
+    color: #ffffff; 
+    font-size: 18px; 
+    font-weight: bold; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin: 15px; 
+}
+
+.Contatinho img {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.Contatinho a:hover img {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+}
