@@ -19,14 +19,14 @@
 }
 
 .header__logo {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 1.25rem;
-  color: var(--accent);
+  display: flex;
+  align-items: center;
 }
 
-.header__logo-text:hover {
-  color: var(--accent-hover);
+.header__logo-img {
+  height: 50px;
+  width: auto;
+  display: block;
 }
 
 .header__menu-btn {

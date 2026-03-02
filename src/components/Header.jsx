@@ -5,8 +5,8 @@ const navItems = [
   { href: '#inicio', label: 'Início' },
   { href: '#sobre', label: 'Sobre' },
   { href: '#formacao', label: 'Formação' },
+  { href: '#projetos', label: 'Projetos' },
   { href: '#dados', label: 'Dados' },
-  { href: '#contato', label: 'Contato' },
 ]
 
 export default function Header() {
@@ -16,7 +16,11 @@ export default function Header() {
     <header className="header">
       <div className="header__inner">
         <a href="#inicio" className="header__logo">
-          <span className="header__logo-text">&lt;CV /&gt;</span>
+          <img
+            src="/img/brasaocor.png"
+            alt="Logo PUC Minas"
+            className="header__logo-img"
+          />
         </a>
 
         <button

@@ -4,7 +4,7 @@ const formacoes = [
   {
     instituicao: 'PUC Minas - Betim',
     curso: 'Sistemas de Informação',
-    periodo: '1º período (em andamento)',
+    periodo: '3º período (em andamento)',
     tipo: 'Graduação',
   },
   {

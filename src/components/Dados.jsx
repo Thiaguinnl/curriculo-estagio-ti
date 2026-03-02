@@ -2,9 +2,9 @@ import './Dados.css'
 
 const dadosPessoais = [
   { label: 'Nome', value: 'Thiago Grandim das Mercês' },
-  { label: 'Idade', value: '18 anos' },
+  { label: 'Idade', value: '19 anos' },
   { label: 'Estado Civil', value: 'Solteiro' },
-  { label: 'Endereço', value: 'Rua da Suíça, 272, Jardim Casa Branca, Betim - MG' },
+  { label: 'Endereço', value: 'Rua Afro Domigos, Filadélfia, Betim - MG' },
   { label: 'Telefone', value: '+55 (31) 98246-5473' },
   { label: 'Idiomas', value: 'Português BR (nativo) e Inglês (intermediário)' },
 ]
