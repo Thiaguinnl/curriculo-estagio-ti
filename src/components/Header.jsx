@@ -9,7 +9,7 @@ export default function Header({ language, setLanguage, content }) {
       <div className="header__inner">
         <a href="#inicio" className="header__logo">
           <img
-            src="/img/brasaocor.png"
+            src="img/brasaocor.png"
             alt="Logo PUC Minas"
             className="header__logo-img"
           />

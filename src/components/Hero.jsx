@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import './Hero.css'
 
 const socialLinks = [
-  { href: 'mailto:thiagograndim.m@gmail.com', icon: '/img/envelope.png', key: 'email' },
-  { href: 'https://github.com/Thiaguinnl', icon: '/img/github.png', key: 'github' },
-  { href: 'https://www.instagram.com/thiaguinnl/', icon: '/img/instagram.png', key: 'instagram' },
+  { href: 'mailto:thiagograndim.m@gmail.com', icon: 'img/envelope.png', key: 'email' },
+  { href: 'https://github.com/Thiaguinnl', icon: 'img/github.png', key: 'github' },
+  { href: 'https://www.instagram.com/thiaguinnl/', icon: 'img/instagram.png', key: 'instagram' },
 ]
 
 export default function Hero({ content }) {
@@ -62,7 +62,7 @@ export default function Hero({ content }) {
         <p className="hero__greeting">
           {content.greeting}
           <img
-            src="/img/happy.gif"
+            src="img/happy.gif"
             alt={content.greetingIconAlt}
             className="hero__greeting-icon"
           />

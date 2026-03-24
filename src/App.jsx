@@ -50,21 +50,21 @@ const translations = {
       sectionTitle: 'Sobre',
       cards: [
         {
-          icon: '/img/display-code.png',
+          icon: 'img/display-code.png',
           alt: 'Ícone representando programação',
           title: 'Programador',
           description:
             'Ensino Médio completo no Colégio Educare - Betim. Cursando o primeiro período de Sistemas de Informação na PUC Minas - Betim. Atualmente dedicando-se ao trabalho de balconista na Drogaria Grandim - Betim.',
         },
         {
-          icon: '/img/employee-man-alt.png',
+          icon: 'img/employee-man-alt.png',
           alt: 'Ícone representando experiência profissional',
           title: 'Mundo do Trabalho',
           description:
             'Pessoa divertida e compromissada, com boa capacidade de lidar com exigências em grupos e com superiores. Habilidades em dedicação e êxito laboral, buscando ser um diferencial na empresa.',
         },
         {
-          icon: '/img/talent-alt.png',
+          icon: 'img/talent-alt.png',
           alt: 'Ícone representando habilidades pessoais',
           title: 'Habilidades',
           description:
@@ -242,21 +242,21 @@ const translations = {
       sectionTitle: 'About',
       cards: [
         {
-          icon: '/img/display-code.png',
+          icon: 'img/display-code.png',
           alt: 'Icon representing programming',
           title: 'Developer',
           description:
             'High school graduate from Educare School - Betim. Currently in the first semester of Information Systems at PUC Minas - Betim. At the moment, I work as a clerk at Drogaria Grandim - Betim.',
         },
         {
-          icon: '/img/employee-man-alt.png',
+          icon: 'img/employee-man-alt.png',
           alt: 'Icon representing professional experience',
           title: 'Work Profile',
           description:
             'Fun and committed person, with strong ability to handle team demands and work with leadership. Focused on dedication and job excellence, aiming to be a positive difference in the company.',
         },
         {
-          icon: '/img/talent-alt.png',
+          icon: 'img/talent-alt.png',
           alt: 'Icon representing personal skills',
           title: 'Skills',
           description:
