@@ -2,45 +2,10 @@ import { useMemo, useState } from 'react'
 import Modal from './Modal'
 import './Projetos.css'
 
-export default function Projetos() {
+export default function Projetos({ content, modalContent }) {
   const projects = useMemo(
-    () => [
-      {
-        id: 'projeto-1',
-        title: 'Recipe Master',
-        subtitle: 'Site culinário feito no 1º período',
-        stack: ['HTML', 'CSS', 'JavaScript'],
-        bullets: ['Interface responsiva', 'Foco em UX e organização'],
-        demoUrl: 'https://thiaguinnl.github.io/curriculo-estagio-ti/',
-        codeUrl: 'https://github.com/SEU-USUARIO/SEU-REPO',
-        details: {
-          problema: 'Qual problema esse projeto resolve?',
-          decisoes: [
-            'Estruturei componentes/partes para facilitar manutenção',
-            'Cuidei de responsividade e acessibilidade básica',
-          ],
-          desafios: ['Layout responsivo', 'Organização do código'],
-        },
-      },
-      {
-        id: 'projeto-2',
-        title: 'Projeto Finalizado (sem demo)',
-        subtitle: 'Projeto pronto, ainda não hospedado',
-        stack: ['React', 'Vite'],
-        bullets: ['Componentização', 'Design consistente'],
-        demoUrl: '',
-        codeUrl: 'https://github.com/SEU-USUARIO/OUTRO-REPO',
-        details: {
-          problema: 'Qual problema esse projeto resolve?',
-          decisoes: [
-            'Reaproveitamento de componentes e estilos',
-            'Separação clara de responsabilidades',
-          ],
-          desafios: ['Modelagem de estados', 'Refino de UI'],
-        },
-      },
-    ],
-    [],
+    () => content.projects,
+    [content.projects],
   )
 
   const [open, setOpen] = useState(false)
@@ -60,15 +25,17 @@ export default function Projetos() {
 
   return (
     <section id="projetos" className="projects">
-      <h2 className="section__title">Projetos</h2>
-      <p className="projects__subtitle">
-        Alguns projetos que desenvolvi — com demo, código e detalhes técnicos.
-      </p>
+      <h2 className="section__title">{content.sectionTitle}</h2>
+      <p className="projects__subtitle">{content.subtitle}</p>
 
       <div className="projects__grid">
         {projects.map((p) => (
           <article key={p.id} className="projects__card">
-            <div className="projects__thumb" aria-hidden="true" />
+            <div className="projects__thumb" aria-hidden="true">
+              {p.thumb ? (
+                <img className="projects__thumb-img" src={p.thumb} alt="" loading="lazy" />
+              ) : null}
+            </div>
 
             <div className="projects__meta">
               <h3 className="projects__title">{p.title}</h3>
@@ -94,9 +61,9 @@ export default function Projetos() {
                 className="projects__btn projects__btn--primary"
                 onClick={() => openModal(p.id)}
                 disabled={!p.demoUrl && !p.details}
-                title={!p.demoUrl ? 'Sem demo online (abre detalhes)' : 'Abrir demo'}
+                title={!p.demoUrl ? content.labels.noOnlineDemoTitle : content.labels.openDemoTitle}
               >
-                Ver Demo
+                {content.labels.viewDemo}
               </button>
               <a
                 className="projects__btn"
@@ -104,10 +71,10 @@ export default function Projetos() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Ver Código
+                {content.labels.viewCode}
               </a>
               <button className="projects__btn" onClick={() => openModal(p.id)}>
-                Ver Detalhes
+                {content.labels.viewDetails}
               </button>
             </div>
           </article>
@@ -116,8 +83,10 @@ export default function Projetos() {
 
       <Modal
         open={open}
-        title={activeProject ? activeProject.title : 'Projeto'}
+        title={activeProject ? activeProject.title : content.labels.modalFallbackTitle}
         onClose={closeModal}
+        closeLabel={modalContent.close}
+        closeModalLabel={modalContent.closeModal}
       >
         {activeProject ? (
           <div className="projectsModal">
@@ -127,7 +96,7 @@ export default function Projetos() {
                   <iframe
                     className="projectsModal__iframe"
                     src={activeProject.demoUrl}
-                    title={`Demo: ${activeProject.title}`}
+                    title={`${content.labels.demoTitlePrefix} ${activeProject.title}`}
                     loading="lazy"
                     sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                   />
@@ -138,24 +107,21 @@ export default function Projetos() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Abrir em nova aba
+                      {content.labels.openInNewTab}
                     </a>
                   </div>
                 </>
               ) : (
                 <div className="projectsModal__noDemo">
-                  <div className="projectsModal__noDemoTitle">Demo não disponível</div>
-                  <div className="projectsModal__noDemoText">
-                    Esse projeto está finalizado, mas ainda não está hospedado. Você pode ver o
-                    código no GitHub e ler os detalhes técnicos ao lado.
-                  </div>
+                  <div className="projectsModal__noDemoTitle">{content.labels.noDemoTitle}</div>
+                  <div className="projectsModal__noDemoText">{content.labels.noDemoText}</div>
                 </div>
               )}
             </div>
 
             <aside className="projectsModal__panel">
               <div className="projectsModal__panelBlock">
-                <div className="projectsModal__label">Stack</div>
+                <div className="projectsModal__label">{content.labels.stack}</div>
                 <div className="projectsModal__chips">
                   {activeProject.stack.map((s) => (
                     <span key={s} className="projectsModal__chip">
@@ -166,12 +132,12 @@ export default function Projetos() {
               </div>
 
               <div className="projectsModal__panelBlock">
-                <div className="projectsModal__label">Problema resolvido</div>
+                <div className="projectsModal__label">{content.labels.problemSolved}</div>
                 <div className="projectsModal__text">{activeProject.details?.problema}</div>
               </div>
 
               <div className="projectsModal__panelBlock">
-                <div className="projectsModal__label">Decisões técnicas</div>
+                <div className="projectsModal__label">{content.labels.technicalDecisions}</div>
                 <ul className="projectsModal__list">
                   {(activeProject.details?.decisoes || []).map((d) => (
                     <li key={d}>{d}</li>
@@ -180,7 +146,7 @@ export default function Projetos() {
               </div>
 
               <div className="projectsModal__panelBlock">
-                <div className="projectsModal__label">Desafios</div>
+                <div className="projectsModal__label">{content.labels.challenges}</div>
                 <ul className="projectsModal__list">
                   {(activeProject.details?.desafios || []).map((d) => (
                     <li key={d}>{d}</li>
@@ -195,7 +161,7 @@ export default function Projetos() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Ver código no GitHub
+                  {content.labels.viewCodeOnGithub}
                 </a>
               </div>
             </aside>

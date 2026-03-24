@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import './Modal.css'
 
-export default function Modal({ open, title, onClose, children }) {
+export default function Modal({ open, title, onClose, children, closeLabel, closeModalLabel }) {
   const closeBtnRef = useRef(null)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function Modal({ open, title, onClose, children }) {
 
   return createPortal(
     <div className="modal" role="dialog" aria-modal="true" aria-label={title}>
-      <button className="modal__overlay" onClick={onClose} aria-label="Fechar" />
+      <button className="modal__overlay" onClick={onClose} aria-label={closeLabel} />
       <div className="modal__panel">
         <div className="modal__header">
           <div className="modal__title">{title}</div>
@@ -37,7 +37,7 @@ export default function Modal({ open, title, onClose, children }) {
             ref={closeBtnRef}
             className="modal__close"
             onClick={onClose}
-            aria-label="Fechar modal"
+            aria-label={closeModalLabel}
           >
             ✕
           </button>

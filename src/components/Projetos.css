@@ -39,7 +39,13 @@
 }
 
 .projects__thumb {
-  height: 140px;
+  position: relative;
+  height: 150px;
+  padding: 0.75rem 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
   background: radial-gradient(
       1000px 300px at 0% 0%,
       rgba(99, 102, 241, 0.22),
@@ -50,8 +56,27 @@
       rgba(165, 243, 252, 0.12),
       transparent 55%
     ),
-    rgba(255, 255, 255, 0.03);
+    rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid var(--border);
+}
+
+.projects__thumb-img {
+  height: 120px;
+  max-width: none;
+  transform-origin: center center;
+  transform: perspective(900px) rotateX(18deg) rotateZ(-12deg) translateY(12px);
+  filter: blur(3px);
+  opacity: 0.8;
+  border-radius: 14px;
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.45);
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+  will-change: transform, filter, opacity;
+}
+
+.projects__card:hover .projects__thumb-img {
+  transform: perspective(900px) rotateX(10deg) rotateZ(-4deg) translateY(0) scale(1.02);
+  filter: blur(1px);
+  opacity: 1;
 }
 
 .projects__meta {

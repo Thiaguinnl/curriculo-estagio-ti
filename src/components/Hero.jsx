@@ -2,30 +2,15 @@ import { useEffect, useState } from 'react'
 import './Hero.css'
 
 const socialLinks = [
-  { href: 'mailto:thiagograndim.m@gmail.com', icon: '/img/envelope.png', label: 'E-mail' },
-  { href: 'https://github.com/Thiaguinnl', icon: '/img/github.png', label: 'GitHub' },
-  { href: 'https://www.instagram.com/thiaguinnl/', icon: '/img/instagram.png', label: 'Instagram' },
+  { href: 'mailto:thiagograndim.m@gmail.com', icon: '/img/envelope.png', key: 'email' },
+  { href: 'https://github.com/Thiaguinnl', icon: '/img/github.png', key: 'github' },
+  { href: 'https://www.instagram.com/thiaguinnl/', icon: '/img/instagram.png', key: 'instagram' },
 ]
 
-export default function Hero() {
+export default function Hero({ content }) {
   const [visibleChars, setVisibleChars] = useState(0)
 
-  const codeSegments = [
-    { text: 'const', className: 'code-key' },
-    { text: ' dev = { ', className: '' },
-    { text: 'nome: ', className: '' },
-    { text: '"Thiago"', className: 'code-string' },
-    { text: ', ', className: '' },
-    { text: 'foco: ', className: '' },
-    { text: '"Estágio em TI"', className: 'code-string' },
-    { text: ', ', className: '' },
-    { text: 'stack: [', className: '' },
-    { text: '"React"', className: 'code-string' },
-    { text: ', ', className: '' },
-    { text: '"JavaScript"', className: 'code-string' },
-    { text: '] ', className: '' },
-    { text: '};', className: '' },
-  ]
+  const codeSegments = content.codeSegments
 
   const fullText = codeSegments.map((seg) => seg.text).join('')
   const fullLength = fullText.length
@@ -51,7 +36,7 @@ export default function Hero() {
     return () => {
       if (timeoutId) clearTimeout(timeoutId)
     }
-  }, [])
+  }, [fullLength, fullText])
 
   let remaining = visibleChars
 
@@ -75,32 +60,33 @@ export default function Hero() {
     <section id="inicio" className="hero">
       <div className="hero__content">
         <p className="hero__greeting">
-          Olá, visitante!
+          {content.greeting}
           <img
             src="/img/happy.gif"
-            alt="Ícone animado sorrindo"
+            alt={content.greetingIconAlt}
             className="hero__greeting-icon"
           />
         </p>
         <h1 className="hero__title">
-          Meu nome é <span className="hero__highlight">Thiago</span>
+          {content.titlePrefix} <span className="hero__highlight">Thiago</span>
         </h1>
-        <p className="hero__subtitle">Aspirante a programador · Buscando estágio em TI</p>
-        <p className="hero__bio">
-          Universitário dedicado em constante aprendizado, buscando oportunidades na área de 
-          programação para aprimorar habilidades técnicas e adquirir experiência prática.
-        </p>
+        <p className="hero__subtitle">{content.subtitle}</p>
+        <p className="hero__bio">{content.bio}</p>
         <div className="hero__social">
           {socialLinks.map((link) => (
             <a
-              key={link.label}
+              key={link.key}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
               className="hero__social-link"
-              aria-label={link.label}
+              aria-label={content.socialLabels[link.key]}
             >
-              <img className="hero__social-icon" src={link.icon} alt={link.label} />
+              <img
+                className="hero__social-icon"
+                src={link.icon}
+                alt={content.socialLabels[link.key]}
+              />
             </a>
           ))}
         </div>

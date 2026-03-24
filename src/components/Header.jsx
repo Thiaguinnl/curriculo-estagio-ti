@@ -1,15 +1,7 @@
 import { useState } from 'react'
 import './Header.css'
 
-const navItems = [
-  { href: '#inicio', label: 'Início' },
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#formacao', label: 'Formação' },
-  { href: '#projetos', label: 'Projetos' },
-  { href: '#dados', label: 'Dados' },
-]
-
-export default function Header() {
+export default function Header({ language, setLanguage, content }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
@@ -26,7 +18,7 @@ export default function Header() {
         <button
           className={`header__menu-btn ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Menu"
+          aria-label={content.menuAriaLabel}
         >
           <span></span>
           <span></span>
@@ -35,7 +27,7 @@ export default function Header() {
 
         <nav className={`header__nav ${menuOpen ? 'open' : ''}`}>
           <ul className="header__nav-list">
-            {navItems.map((item) => (
+            {content.navItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
@@ -52,8 +44,19 @@ export default function Header() {
             className="header__cta"
             onClick={() => setMenuOpen(false)}
           >
-            Contato
+            {content.contact}
           </a>
+          <button
+            type="button"
+            className={`header__lang-toggle ${language === 'en' ? 'is-en' : ''}`}
+            onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
+            aria-label={content.languageAriaLabel}
+            title={content.languageAriaLabel}
+          >
+            <span className="header__lang-thumb" aria-hidden="true" />
+            <span className={`header__lang-option ${language === 'pt' ? 'active' : ''}`}>PT</span>
+            <span className={`header__lang-option ${language === 'en' ? 'active' : ''}`}>EN</span>
+          </button>
         </nav>
       </div>
     </header>

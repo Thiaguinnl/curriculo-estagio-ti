@@ -1,26 +1,11 @@
 import './Formacao.css'
 
-const formacoes = [
-  {
-    instituicao: 'PUC Minas - Betim',
-    curso: 'Sistemas de Informação',
-    periodo: '3º período (em andamento)',
-    tipo: 'Graduação',
-  },
-  {
-    instituicao: 'Colégio Educare - Betim',
-    curso: 'Ensino Médio',
-    periodo: 'Completo',
-    tipo: 'Ensino Médio',
-  },
-]
-
-export default function Formacao() {
+export default function Formacao({ content }) {
   return (
     <section id="formacao" className="formacao">
-      <h2 className="section__title">Formação</h2>
+      <h2 className="section__title">{content.sectionTitle}</h2>
       <div className="formacao__timeline">
-        {formacoes.map((item, index) => (
+        {content.items.map((item, index) => (
           <div key={index} className="formacao__item">
             <div className="formacao__dot"></div>
             <div className="formacao__content">
